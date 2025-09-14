@@ -1,36 +1,34 @@
 package ru.netology.repository;
 
+import org.springframework.stereotype.Repository;
 import ru.netology.model.Post;
-import java.util.List;
-import java.util.Optional;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-
-
+@Repository
 public class PostRepository {
-  private final Map<Long, Post> posts = new ConcurrentHashMap<>(); // <-- поле класса
-  private final AtomicLong idCounter = new AtomicLong(0);          // <-- поле класса
+  private final Map<Long, Post> posts = new ConcurrentHashMap<>();
+  private final AtomicLong idCounter = new AtomicLong();
 
-  public List<Post> all() {
+  public List<Post> findAll() {
     return new ArrayList<>(posts.values());
   }
 
-  public Optional<Post> getById(long id) {
+  public Optional<Post> findById(long id) {
     return Optional.ofNullable(posts.get(id));
   }
 
   public Post save(Post post) {
-    if (post.getId() == 0 || !posts.containsKey(post.getId())) {
-      // Создание нового поста (или id не найден — тоже создаём новый)
+    if (post.getId() == 0) {   // только для новых постов
       long newId = idCounter.incrementAndGet();
       post.setId(newId);
     }
-    // Сохраняем пост (обновление существующего или новый)
-    posts.put(post.getId(), post);
+    posts.put(post.getId(), post); // сохраняем с существующим ID, если обновление
     return post;
   }
+
 
 
   public void removeById(long id) {

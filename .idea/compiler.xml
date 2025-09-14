@@ -6,8 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="servlets" />
+        <module name="Task_Spring_Web_MVC" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Task_Servlets" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Task_Servlets" options="-parameters" />
+      <module name="Task_Spring_Web_MVC" options="-parameters" />
+    </option>
   </component>
 </project>

@@ -1,0 +1,3 @@
+ru\netology\model\Post.class
+ru\netology\service\PostService.class
+ru\netology\repository\PostRepository.class
