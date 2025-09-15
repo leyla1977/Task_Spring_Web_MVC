@@ -7,10 +7,9 @@ curl -s $BASE_URL
 echo -e "\n"
 
 echo "=== 2️⃣ Создаём новый пост ==="
-POST_DATA='{"content":"Hello World"}'
-RESPONSE=$(curl -s -X POST -H "Content-Type: application/json" -d "$POST_DATA" $BASE_URL)
-ID=$(echo $RESPONSE | grep -oP '(?<="id":)\d+')
+RESPONSE=$(curl -s -X POST -H "Content-Type: application/json" -d '{"content":"Hello World"}' $BASE_URL)
 echo "Ответ сервера при создании: $RESPONSE"
+ID=$(echo $RESPONSE | sed -E 's/.*"id":([0-9]+).*/\1/')
 echo "Создан пост с ID = $ID"
 echo -e "\n"
 
@@ -23,16 +22,14 @@ curl -s $BASE_URL/$ID
 echo -e "\n"
 
 echo "=== 5️⃣ Обновляем пост ==="
-UPDATE_DATA='{"content":"Updated Content"}'
-RESPONSE=$(curl -s -X PUT -H "Content-Type: application/json" -d "$UPDATE_DATA" $BASE_URL/$ID)
-echo "Ответ сервера при обновлении: $RESPONSE"
+curl -s -X PUT -H "Content-Type: application/json" -d '{"content":"Updated Content"}' $BASE_URL/$ID
 echo -e "\n"
 
 echo "=== 6️⃣ Получаем пост после обновления ==="
 curl -s $BASE_URL/$ID
 echo -e "\n"
 
-echo "=== 7️⃣ Удаляем пост ==="
+echo "=== 7️⃣ Мягко удаляем пост ==="
 curl -s -X DELETE $BASE_URL/$ID
 echo "Пост с ID = $ID удалён"
 echo -e "\n"
@@ -40,3 +37,7 @@ echo -e "\n"
 echo "=== 8️⃣ Получаем все посты после удаления (должно быть пусто) ==="
 curl -s $BASE_URL
 echo -e "\n"
+
+echo "=== 9️⃣ Проверяем получение удалённого поста (должно вернуть 404) ==="
+HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $BASE_URL/$ID)
+echo "HTTP статус при получении удалённого поста: $HTTP_STATUS"

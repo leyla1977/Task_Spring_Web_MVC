@@ -1,3 +1,7 @@
+ru\netology\exception\PostNotFoundException.class
+ru\netology\controller\PostController.class
+ru\netology\Application.class
+ru\netology\exception\NotFoundException.class
 ru\netology\model\Post.class
 ru\netology\service\PostService.class
 ru\netology\repository\PostRepository.class

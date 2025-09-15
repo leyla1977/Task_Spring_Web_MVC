@@ -1,6 +1,7 @@
-C:\Work\Java\Task_Servlets\src\main\java\ru\netology\exception\NotFoundException.java
-C:\Work\Java\Task_Servlets\src\main\java\ru\netology\model\Post.java
-C:\Work\Java\Task_Servlets\src\main\java\ru\netology\service\PostService.java
-C:\Work\Java\Task_Servlets\src\main\java\ru\netology\controller\PostController.java
-C:\Work\Java\Task_Servlets\src\main\java\ru\netology\Application.java
-C:\Work\Java\Task_Servlets\src\main\java\ru\netology\repository\PostRepository.java
+C:\Work\Java\Task_Migration\src\main\java\ru\netology\model\Post.java
+C:\Work\Java\Task_Migration\src\main\java\ru\netology\controller\PostController.java
+C:\Work\Java\Task_Migration\src\main\java\ru\netology\Application.java
+C:\Work\Java\Task_Migration\src\main\java\ru\netology\repository\PostRepository.java
+C:\Work\Java\Task_Migration\src\main\java\ru\netology\service\PostService.java
+C:\Work\Java\Task_Migration\src\main\java\ru\netology\exception\PostNotFoundException.java
+C:\Work\Java\Task_Migration\src\main\java\ru\netology\exception\NotFoundException.java
